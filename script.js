@@ -19,12 +19,31 @@ function getPassword(){
   var keyLength = prompt(
       "Please select a password length. Passwords must be 8 to 28 characters.");
     
+// If not return length not valid
+if (keyLength < 8 || keyLength > 128 || isNaN(keyLength)) {
+  alert("Your password did not satisfy the length criteria. Please try again.");        
+  return;
+
+// Other Possible Choices 
+} else {
 
 
+  if (uppercase) {random += uppercase;}
+  if (lowercase) {random += lowercase;}
+  if (numbers) {random += number;}
+  if (symbols) {random += specialchar;}
 
 
+// Generator loop
+for (i = 0; i < keyLength; i++) {
+
+  // Password generated
+          key += random[Math.floor(Math.random() * random.length)]
+      }
+      return(key);
 
 }
+
 
 
 // Write password to the #password input
