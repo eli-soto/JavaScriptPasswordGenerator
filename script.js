@@ -1,6 +1,7 @@
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
 // Generator Function
 function getPassword(){
   var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -27,12 +28,11 @@ if (keyLength < 8 || keyLength > 128 || isNaN(keyLength)) {
 // Other Possible Choices 
 } else {
 
-
   if (uppercase) {random += uppercase;}
   if (lowercase) {random += lowercase;}
   if (numbers) {random += number;}
   if (symbols) {random += specialchar;}
-
+}
 
 // Generator loop
 for (i = 0; i < keyLength; i++) {
@@ -44,16 +44,14 @@ for (i = 0; i < keyLength; i++) {
 
 }
 
-
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
+//Write password to the #password input. The text box area where the newly generated password will appear.
+var passwordText = document.querySelector("#password");
+function writePassword(key) {
+if (password.length === 0) {
+    return;
+}
+passwordText.value = key;
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button. This is a Call To Action (CTA button)
+generateBtn.addEventListener("click", function () { writePassword(getPassword()) });
